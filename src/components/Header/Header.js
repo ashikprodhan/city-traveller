@@ -19,7 +19,7 @@ const Header = () => {
                             <Link to="/" className="nav-link active" aria-current="page">Home</Link>
                             <Link to="/destination" className="nav-link active">Destination</Link>
                             <Link to="/contact" className="nav-link active">Contact</Link>
-                        {loggedInUser.email ? <p>{loggedInUser.name}</p> : <Link to="/login" className="nav-link active">LogIn</Link>}
+                        {loggedInUser.email ? <p>{loggedInUser.name}</p> : <Link to="/login" className="nav-link active">Login</Link>}
                             
                         </div>
                     </div>
