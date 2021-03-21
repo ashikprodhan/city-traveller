@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import vehicleData from '../../FakeData/fakeData.json'
 
 import Vehicles from '../Vehicles/Vehicles';
 import bgPhoto from '../../images/Bg.png'
+import './Home.css'
 
 const Home = () => {
 
@@ -13,17 +14,17 @@ const Home = () => {
    },[]);
    console.log(vehicle);
     return (
-        <div className="bgImage" >
+        <Container >
              
            
                <Row>
                    {
-                       vehicle.map(transport => < Vehicles transport={transport} key={transport.id}  ></Vehicles> )
+                       vehicle.map(transport => <Col>< Vehicles transport={transport} key={transport.id}  ></Vehicles></Col> )
                    }
                </Row>
            
             
-        </div>
+        </Container>
     );
 };
 

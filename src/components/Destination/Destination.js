@@ -1,47 +1,96 @@
 import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
 import detail from '../../FakeData/fakeData.json';
+import Map from '../Map/Map';
+import './Destination.css'
 
 const Destination = () => {
     let { id} = useParams();
-
+    const [location, setLocation] = useState({
+        pickTo:'',
+        pickFrom:''
+    })
     const [loggedInUser, setLoggedInUser] =useContext(UserContext)
     const [press, setPress] = useState(false)
     const [details, setDetails] = useState(detail)
-    console.log(details);
+    // console.log(details);
     const vehicle = details.find(vcle => vcle.id == parseInt(id));
     const {image ,price}= vehicle;
-    console.log('vecle', image);
+    // console.log('vecle', image);
     const handlePress=()=>{
         setPress(!press);
     }
+
+    const handleBlur = (e) => {
+        // debugger;
+        // console.log(e.target.name,e.target.value);
+        let isLocationValid = true;
+        if (e.target.name === 'pickTo') {
+            
+            isLocationValid = /^[a-zA-Z ]+$/.test(e.target.value);
+            console.log(isLocationValid);
+            //  console.log(e.target.name,isEmailValid);
+        }
+    
+        if (e.target.name === 'pickFrom') {
+    
+          
+          //smart validation  /^([a-z0-9]{8,})$/
+          //  const isPasswordValid =/^([a-z0-9]{8,})$/.test(e.target.value)
+          const isPickFromValid = /^[a-zA-Z ]+$/.test(e.target.value);
+          isLocationValid = isPickFromValid ;
+        //    console.log(e.target.name,isPickFromValid);
+           console.log(isLocationValid);
+        }
+        if (isLocationValid) {
+          const newLocationInfo = { ...location };
+          newLocationInfo[e.target.name] = e.target.value;
+          setLocation(newLocationInfo);
+          
+          
+    
+        }
+        // console.log('last one', isEmailValid);
+      }
     // useEffect(()=>{
     //     setDetails(detail)
     // },[]);
     return (
-        <div>
-             {!press && <form action="">
+        <Container>
+             <Row  >
+            <Col >{!press &&
+              <form onSubmit={handlePress} >
                  <p>id : {id} </p>
          <label htmlFor="pickTo">Pick to</label>
-         
-             <input type="text" placeholder="Pick to" id="pick"/> 
+            <input type="text" name="pickTo" onBlur={handleBlur}   placeholder="Pick to" id="pick" required/> 
              <br/>
-              <label htmlFor="pickTo">Pick from</label> <input type="text" placeholder="Pick from" id="pick"/> 
+              <label htmlFor="pickFrom">Pick from</label> 
+              <input type="text" name="pickFrom" onBlur={handleBlur} placeholder="Pick from" id="pick" required /> 
 
-               <br/> <input onClick={handlePress} type="submit" value="search"/>
+               <br/> <input  type="submit" value="search"/>
             </form>}
-            {press && <div>
-                <h4> Gulshan to Mirpur </h4>
-                <img src={image} alt=""/>
-                <p>Price :${price}</p>
+            {press && <div >
+                <h4> to {location.pickTo} from {location.pickFrom} </h4>
+                <div className="d-flex" ><img  src={image} height="50px" width="50px" className="img-fluid" alt=""/>
+                <p>Travel fare :${price}</p></div>
+                <div className="d-flex" ><img  src={image} height="50px" width="50px" className="img-fluid" alt=""/>
+                <p>Travel fare :${price}</p></div>
+                <div className="d-flex" ><img  src={image} height="50px" width="50px" className="img-fluid" alt=""/>
+                <p>Travel fare :${price}</p></div>
+                
+                
             </div>
 
             }
-            <h1>this is destination </h1>
-        </div>
+            </Col>
+            <Col><Map></Map></Col>
+             </Row>
+            
+        </Container>
     );
 };
 

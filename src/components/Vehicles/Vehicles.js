@@ -18,7 +18,7 @@ const Vehicles = (props) => {
     return (
         <>
             
-            <Card onClick={handleClick} style={{ width: '150px',margin:'10px auto' }}>
+            <Card onClick={handleClick} style={{ width: '150px',margin:'10px 10px' }}>
             {/* <Link to={`/destination/${id}`}> */}
             
                 <Card.Img variant="top" src={image} />
