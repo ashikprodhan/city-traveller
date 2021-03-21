@@ -19,7 +19,7 @@ function Map() {
     googleMapsApiKey: "AIzaSyA0WJMCMWyQfTlGIwt3tg7qAI7kEw9jmxY"
   })
 
-  const [map, setMap] = React.useState(null)
+  // const [map, setMap] = React.useState(null)
 
   
 

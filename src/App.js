@@ -20,27 +20,27 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
-     <p>name {loggedInUser.name} </p>
-     <Router>
-       <Header></Header>
-       <Switch>
-       <Route exact path="/">
-            <Home></Home>
-          </Route>
-       <Route  path="/home">
-            <Home></Home>
-          </Route>
-       <Route path="/login">
-            <Login></Login>
-          </Route>
-       <PrivateRoute path="/destination/:id">
-              <Destination></Destination>
-          </PrivateRoute>
-       
 
-       </Switch>
-     </Router>
-     </UserContext.Provider>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/home">
+              <Home></Home>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <PrivateRoute path="/destination/:id">
+              <Destination></Destination>
+            </PrivateRoute>
+
+
+          </Switch>
+        </Router>
+      </UserContext.Provider>
     </div>
   );
 }
