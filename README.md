@@ -1,5 +1,9 @@
 ### Project name: City travellers
-# In this website if you click on any vehicle it will take you to destination page if you are logged in .If you are not logged in then then you need to log in . 
-## You can login with google and email account 
-# In destination page you will see the photo of vehicle , travel fare and google map .
+
+Features :
+11This travelling site .Once you click on the vehicle it will take you to the destination page .
+2.It has firebase authentication .
+3.If you are logged in only you can see the destination page .
+4.In destination page you will see travel fare ,photo of vehicle and google map.
+Technology: React js, React router, firebase , bootstrap
 ## live link for site :https://city-travellers.web.app/
